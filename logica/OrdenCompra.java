@@ -27,11 +27,11 @@ public class OrdenCompra {
 	}
 	
 	public void editarDetalle(ArrayList<DetalleOrden> detalle) {
-		//esto tampoco se
+		
 	}
 	
 	public void borarDetalle(ArrayList<DetalleOrden> detalle) {
-		//xd
+		
 	}
 	public void marcarPendiente() {
 		
