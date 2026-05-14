@@ -10,7 +10,7 @@ public class OrdenCompra {
 	private ArrayList<DetalleOrden> detalle;
 	private final static Double IVA = 0.13;
 	
-	public OrdenCompra(int numero, Date fecha, String estado, ArrayList<DetalleOrden> detalle ) {
+	public OrdenCompra(int numero, Date fecha, String estado) {
 		this.numero = numero;
 		this.fecha = fecha;
 		this.estado = estado;
@@ -22,30 +22,36 @@ public class OrdenCompra {
 		return numero;
 	}
 	
-	public void agregarDetalle( detalle) {
-		detalle.add(DetalleOrden);
+	public void agregarDetalle(DetalleOrden detalles) {
+		detalle.add(detalles);
 	}
 	
-	public void editarDetalle(ArrayList<DetalleOrden> detalle) {
-		
+	public void editarDetalle(DetalleOrden detalles, int pos) {
+		detalle.set(pos, detalles);
 	}
 	
-	public void borarDetalle(ArrayList<DetalleOrden> detalle) {
-		
+	public void borarDetalle(int pos) {
+		detalle.remove(pos);
 	}
+	
 	public void marcarPendiente() {
-		
+		estado = "Pendiente. ";
 	}
 	
 	public void terminar() {
-		
+		estado = "Terminada";
 	}
 	
 	public Double calcularTotal() {
-		//esto deberia recorrer todo el array e ir sumando?
+		double result = 0;
+		for (int i = 0; i < detalle.size(); i++) {
+			result += detalle.get(i).getCosto() + calcularImp(detalle.get(i).getCosto());
+		}
+		return result;
 	}
 	
-	public Double calcularImp() {
-		//aqui uso IVA
+	public Double calcularImp(double i) {
+		double resultF = i * IVA;
+		return resultF;
 	}
 }
